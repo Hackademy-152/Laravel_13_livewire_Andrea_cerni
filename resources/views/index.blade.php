@@ -1,5 +1,5 @@
 <x-layout>
-    <h1 class="text-center text-danger display-1">gli articoli nel nostro database😎
+    <h1 class="text-center text-danger">La collana delle avventure di Franco!😎
 
 <div class="container">
     <div class="row">

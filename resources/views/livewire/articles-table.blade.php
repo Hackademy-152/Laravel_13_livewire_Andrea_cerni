@@ -3,31 +3,29 @@
     <!--creata con livewire!-->
     <table class="table">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Titolo</th>
-            <th scope="col">Genere</th>
-            <th scope="col">Trama</th>
-          </tr>
+            <tr>
+                <th scope="col">#id</th>
+                <th scope="col">Titolo</th>
+                <th scope="col">Genere</th>
+                <th scope="col">Trama</th>
+            </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+            <!--per poter vedere i dati che si creano nella tabella,necessito un for each e di passare la sintassi blade per visualizzare il contenuto di ogni record-->
+            @foreach ($articles as $article)
+                <tr>
+                    <th scope="row">{{ $article->id }}</th>
+                    <td class="text-primary bg-warning">{{ $article->titolo }}</td>
+                    <td class="bg-danger">{{ $article->genere }}</td>
+                    <td class="bg-black text-white">{{ $article->trama }}</td>
+                    <td>
+                        <!--grazie a livewire noi colleghiamo il bottone alla funzione creata in articlesTable nella cartella di livewire e la con la sintassi di blade la facciamo scattare sull'id dell'articolo rendendo così il bottone parametrico, altrimenti non può sapere quale cancellare!-->
+                        <button class="btn btn-warning" wire:click="deleteArticle({{ $article->id }})">Cancella</button>
+                        <!--necessitiamo di un btn con anchor-->
+                        <a href="{{route("change",compact('article'))}}"class="btn btn-success">modifica</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
-      </table>
+    </table>
 </div>
